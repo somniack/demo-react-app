@@ -9,3 +9,31 @@ service:
   targetPort: 3000
   # The service type is a LoadBalancer so that we can access it from the browser
   type: LoadBalancer
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: 
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+    #Core Configuration
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: infocore-public-alb
+
+    # TLS Configuration
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:125278483172:certificate/45049419-3140-4179-b250-8c7c1e0185ef
+    # alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
+
+    # external-dns.alpha.kubernetes.io/hostname: grafana.infosec.livenation.com
+    # kubernetes.io/ingress.class: alb
+    # Health Checks
+    alb.ingress.kubernetes.io/success-codes: "200"
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "15"
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: "5"
+    alb.ingress.kubernetes.io/healthy-threshold-count: "2"
+    alb.ingress.kubernetes.io/unhealthy-threshold-count: "2"
