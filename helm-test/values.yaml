@@ -7,8 +7,9 @@ image:
 service: 
   port: 80
   targetPort: 3000
+  protocol: TCP
   # The service type is a LoadBalancer so that we can access it from the browser
-  type: LoadBalancer
+  type: NodePort
 
 ingress:
   enabled: true
@@ -19,7 +20,7 @@ ingress:
     #Core Configuration
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/group.name: infocore-public-alb
+    alb.ingress.kubernetes.io/group.name: infocore-public-alb1
     # alb.ingress.kubernetes.io/tags: createdBy=aws-controller,Department=InfoSec,Environment=SANDBOX,Owner=luke.fleshman@livenation.com,ProductCode=0001-1415
     # alb.ingress.kubernetes.io/subnets: subnet-0a6049c8bd2be048b,subnet-0784dcfbb41808823,subnet-05b340f58fed322a5
     # TLS Configuration
@@ -42,4 +43,9 @@ ingress:
     - host: helmtest.infosec.livenation.com
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
+          backend:
+            service:
+              name: helm-test
+              port:
+                number: 80
