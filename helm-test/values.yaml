@@ -20,8 +20,8 @@ ingress:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: infocore-public-alb
-    alb.ingress.kubernetes.io/tags: createdBy=aws-controller,Department=InfoSec,Environment=SANDBOX,Owner=luke.fleshman@livenation.com,ProductCode=0001-1415
-    alb.ingress.kubernetes.io/subnets: subnet-0a6049c8bd2be048b,subnet-0784dcfbb41808823,subnet-05b340f58fed322a5
+    # alb.ingress.kubernetes.io/tags: createdBy=aws-controller,Department=InfoSec,Environment=SANDBOX,Owner=luke.fleshman@livenation.com,ProductCode=0001-1415
+    # alb.ingress.kubernetes.io/subnets: subnet-0a6049c8bd2be048b,subnet-0784dcfbb41808823,subnet-05b340f58fed322a5
     # TLS Configuration
     # alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
     # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:125278483172:certificate/45049419-3140-4179-b250-8c7c1e0185ef
