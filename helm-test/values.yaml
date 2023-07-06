@@ -12,7 +12,7 @@ service:
 
 ingress:
   enabled: true
-  className: ""
+  className: "alb"
   annotations: 
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
@@ -38,7 +38,7 @@ ingress:
     alb.ingress.kubernetes.io/healthy-threshold-count: "2"
     alb.ingress.kubernetes.io/unhealthy-threshold-count: "2"
   hosts:
-    - host: chart-example.local
+    - host: helmtest.infosec.livenation.com
       paths:
         - path: /
           pathType: ImplementationSpecific
