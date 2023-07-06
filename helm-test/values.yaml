@@ -1,0 +1,11 @@
+replicaCount: 1
+
+image:
+  repository: 125278483172.dkr.ecr.us-east-2.amazonaws.com/test/react:latest
+  pullPolicy: IfNotPresent
+
+service: 
+  port: 80
+  targetPort: 3000
+  # The service type is a LoadBalancer so that we can access it from the browser
+  type: LoadBalancer
